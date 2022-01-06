@@ -1,7 +1,8 @@
 require('dotenv').config({path: `.env.${process.env.NODE_ENV}`})
 
 require('./db/mongoose')
-import express, { Application, Request, Response } from 'express'
+import express, { Application } from 'express'
+import helmet from 'helmet'
 import AuthRoute from './routes/auth'
 import RecipeRoute from './routes/recipes'
 import MaterialRoute from './routes/materials'
@@ -10,6 +11,7 @@ import MenuRoute from './routes/Receipt/menu'
 import ReceiptRoute from './routes/Receipt/receipt'
 
 const app: Application = express()
+app.use(helmet());
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 

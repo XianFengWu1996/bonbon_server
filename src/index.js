@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require('dotenv').config({ path: ".env." + process.env.NODE_ENV });
 require('./db/mongoose');
 var express_1 = __importDefault(require("express"));
+var helmet_1 = __importDefault(require("helmet"));
 var auth_1 = __importDefault(require("./routes/auth"));
 var recipes_1 = __importDefault(require("./routes/recipes"));
 var materials_1 = __importDefault(require("./routes/materials"));
@@ -13,6 +14,7 @@ var units_1 = __importDefault(require("./routes/units"));
 var menu_1 = __importDefault(require("./routes/Receipt/menu"));
 var receipt_1 = __importDefault(require("./routes/Receipt/receipt"));
 var app = (0, express_1.default)();
+app.use((0, helmet_1.default)());
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use(auth_1.default); // routes relate to authentication
