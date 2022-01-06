@@ -43,14 +43,19 @@ function hasDuplicates(array: string[]) {
 
 router.get('/menu', auth, async(req, res) => {
     try {
-        const menus = await Menu.findOne({
+        let menus = await Menu.findOne({
             owner: req.user?._id
         });
 
         if(!menus){
-            return res.status(404).send({ error: 'Not Found'});
+            menus = new Menu({
+                menu: [],
+                owner: req.user?._id
+            });
         }
-    
+
+        await menus.save()
+
         res.status(200).send({menu: menus.menu});
     } catch (error) {
         res.status(400).send({ error: (error as Error).message});
