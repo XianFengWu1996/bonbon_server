@@ -24,7 +24,9 @@
     "helmet": "^5.0.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.12",
-    "validator": "^13.6.0"
+    "validator": "^13.6.0",
+    "dotenv": "^10.0.0"
+
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -40,7 +42,6 @@
     "babel-cli": "^6.26.0",
     "babel-jest": "^27.3.1",
     "babel-preset-env": "^1.7.0",
-    "dotenv": "^10.0.0",
     "jest": "^27.3.1",
     "nodemon": "^2.0.14",
     "superagent": "^6.1.0",
