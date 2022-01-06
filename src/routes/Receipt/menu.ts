@@ -91,19 +91,20 @@ router.post('/menu', auth, async(req, res) => {
         options.forEach((option) => {
             flavorList.push(option.flavor);
 
+            unitList = [];
             option.unitOption.forEach((unit) => {
                 checkForUnitOption(unit, option.unitOption);
                 unitList.push(unit.unit);
                 delete unit._id;
             })
+
+            if(hasDuplicates(unitList)){
+                throw new Error('Duplicate Unit is not allow');
+            }
         })
 
         if(hasDuplicates(flavorList)){
             throw new Error('Duplicate Flavor is not allow');
-        }
-
-        if(hasDuplicates(unitList)){
-            throw new Error('Duplicate Unit is not allow');
         }
         
         result.menu.unshift({

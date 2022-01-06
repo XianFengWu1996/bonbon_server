@@ -130,17 +130,18 @@ router.post('/menu', auth_1.auth, function (req, res) { return __awaiter(void 0,
                 unitList_1 = [];
                 options.forEach(function (option) {
                     flavorList_1.push(option.flavor);
+                    unitList_1 = [];
                     option.unitOption.forEach(function (unit) {
                         checkForUnitOption(unit, option.unitOption);
                         unitList_1.push(unit.unit);
                         delete unit._id;
                     });
+                    if (hasDuplicates(unitList_1)) {
+                        throw new Error('Duplicate Unit is not allow');
+                    }
                 });
                 if (hasDuplicates(flavorList_1)) {
                     throw new Error('Duplicate Flavor is not allow');
-                }
-                if (hasDuplicates(unitList_1)) {
-                    throw new Error('Duplicate Unit is not allow');
                 }
                 result.menu.unshift({
                     name: name_1,
