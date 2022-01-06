@@ -38,10 +38,6 @@ router.get('/receipt', auth, async(req: Request, res: Response) => {
     try {
         const receipts = await Receipt.find({ owner: req.user?._id }).sort({ 'createdAt': -1});
 
-        if(!receipts){
-            return res.status(404).send({ error: 'No receipt found'});
-        }
-
         res.status(200).send({ receipts });
     } catch (error) {
         res.status(400).send({ error: (error as Error).message});
