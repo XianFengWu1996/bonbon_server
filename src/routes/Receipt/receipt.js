@@ -87,9 +87,6 @@ router.get('/receipt', auth_1.auth, function (req, res) { return __awaiter(void 
                 return [4 /*yield*/, Receipt_1.default.find({ owner: (_a = req.user) === null || _a === void 0 ? void 0 : _a._id }).sort({ 'createdAt': -1 })];
             case 1:
                 receipts = _b.sent();
-                if (!receipts) {
-                    return [2 /*return*/, res.status(404).send({ error: 'No receipt found' })];
-                }
                 res.status(200).send({ receipts: receipts });
                 return [3 /*break*/, 3];
             case 2:

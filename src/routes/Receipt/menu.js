@@ -73,26 +73,32 @@ function hasDuplicates(array) {
 }
 router.get('/menu', auth_1.auth, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var menus, error_1;
-    var _a;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
+    var _a, _b;
+    return __generator(this, function (_c) {
+        switch (_c.label) {
             case 0:
-                _b.trys.push([0, 2, , 3]);
+                _c.trys.push([0, 3, , 4]);
                 return [4 /*yield*/, Menu_1.default.findOne({
                         owner: (_a = req.user) === null || _a === void 0 ? void 0 : _a._id
                     })];
             case 1:
-                menus = _b.sent();
+                menus = _c.sent();
                 if (!menus) {
-                    return [2 /*return*/, res.status(404).send({ error: 'Not Found' })];
+                    menus = new Menu_1.default({
+                        menu: [],
+                        owner: (_b = req.user) === null || _b === void 0 ? void 0 : _b._id
+                    });
                 }
-                res.status(200).send({ menu: menus.menu });
-                return [3 /*break*/, 3];
+                return [4 /*yield*/, menus.save()];
             case 2:
-                error_1 = _b.sent();
+                _c.sent();
+                res.status(200).send({ menu: menus.menu });
+                return [3 /*break*/, 4];
+            case 3:
+                error_1 = _c.sent();
                 res.status(400).send({ error: error_1.message });
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
         }
     });
 }); });
