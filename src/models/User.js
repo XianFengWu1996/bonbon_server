@@ -179,7 +179,7 @@ exports.UserSchema.methods.generateToken = function () {
                     if (!process.env.JWT_SECRET) {
                         throw new Error('Invalid JWT');
                     }
-                    token = jsonwebtoken_1.default.sign({ _id: user.id }, process.env.JWT_SECRET, { expiresIn: '7 days' });
+                    token = jsonwebtoken_1.default.sign({ _id: user.id }, process.env.JWT_SECRET, { expiresIn: '30 days' });
                     // push the token into the array
                     user.tokens.unshift({ token: token });
                     // save the user
