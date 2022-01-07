@@ -259,6 +259,8 @@ router.post('/menu/:menuItemId/option', auth_1.auth, function (req, res) { retur
                     return [2 /*return*/, res.status(404).send({ error: 'Menu Item Not Found' })];
                 }
                 // double check for valid flavor value
+                console.log(flavor);
+                console.log(menuItem.options);
                 checkForFlavor(flavor, menuItem.options);
                 tempUnitNameList_1 = [];
                 tempUnitList_1 = [];
@@ -285,6 +287,7 @@ router.post('/menu/:menuItemId/option', auth_1.auth, function (req, res) { retur
                 return [3 /*break*/, 4];
             case 3:
                 error_5 = _c.sent();
+                console.log(error_5);
                 res.status(400).send({ error: error_5.message });
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];

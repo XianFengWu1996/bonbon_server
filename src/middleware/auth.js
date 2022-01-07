@@ -88,6 +88,11 @@ var auth = function (req, res, next) { return __awaiter(void 0, void 0, void 0, 
                 return [3 /*break*/, 3];
             case 2:
                 error_1 = _b.sent();
+                if (error_1.name !== null) {
+                    if (error_1.name === 'TokenExpiredError' || error_1.name === 'JsonWebTokenError') {
+                        return [2 /*return*/, res.status(401).send({ error: error_1.message })];
+                    }
+                }
                 return [2 /*return*/, res.status(400).send({ error: error_1.message })];
             case 3: return [2 /*return*/];
         }

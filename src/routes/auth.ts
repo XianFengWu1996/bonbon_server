@@ -62,13 +62,13 @@ router.post('/login', async (req: Request, res: Response) => {
 
         res.status(200).send({ user, token })
     } catch (error) {
-        console.log(error)
         res.status(400).send({ error: (error as Error).message})
     }
 })
 
 router.post('/login/save', auth, async (req: Request, res: Response) => {
     try {
+        console.log('login');
         const user = await User.findById(req.user?._id);
         // if user email does not exist
         if(!user){

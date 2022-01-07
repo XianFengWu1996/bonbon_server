@@ -116,7 +116,6 @@ router.post('/login', function (req, res) { return __awaiter(void 0, void 0, voi
                 return [3 /*break*/, 5];
             case 4:
                 error_2 = _a.sent();
-                console.log(error_2);
                 res.status(400).send({ error: error_2.message });
                 return [3 /*break*/, 5];
             case 5: return [2 /*return*/];
@@ -130,6 +129,7 @@ router.post('/login/save', auth_1.auth, function (req, res) { return __awaiter(v
         switch (_c.label) {
             case 0:
                 _c.trys.push([0, 2, , 3]);
+                console.log('login');
                 return [4 /*yield*/, User_1.default.findById((_a = req.user) === null || _a === void 0 ? void 0 : _a._id)];
             case 1:
                 user = _c.sent();

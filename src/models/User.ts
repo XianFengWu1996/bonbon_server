@@ -145,7 +145,7 @@ UserSchema.methods.generateToken = async function(){
         throw new Error('Invalid JWT')
     }
 
-    const token = jwt.sign({_id: user.id}, process.env.JWT_SECRET as Secret, { expiresIn: '30 days'})
+    const token = jwt.sign({_id: user.id}, process.env.JWT_SECRET as Secret, { expiresIn: '30d' });
 
     // push the token into the array
     user.tokens.unshift({token})

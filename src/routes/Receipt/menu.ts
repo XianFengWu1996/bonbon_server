@@ -204,6 +204,8 @@ router.post('/menu/:menuItemId/option', auth, async (req, res) => {
         }
 
         // double check for valid flavor value
+        console.log(flavor);
+        console.log(menuItem.options);
         checkForFlavor(flavor, menuItem.options);
 
         // double check with in the unit option to find any duplicates
@@ -233,6 +235,7 @@ router.post('/menu/:menuItemId/option', auth, async (req, res) => {
         // send back the first in the array since it was unshift into the array
         res.status(200).send({ option: menuItem.options[0] });
     } catch (error) {
+        console.log(error);
         res.status(400).send({ error: (error as Error).message});
     }
 })
