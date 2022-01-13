@@ -63,12 +63,12 @@ export const ReceiptSchema: Schema<IReceipt> = new Schema({
     },
     address: {
         type: String, 
-        required: true,
+        default: '',
     },
     deliveryFee: {
         type: Number, 
-        required: true,
-        min: 0
+        default: 0,
+        min: 0,
     },
     pickupDate: {
         type: String, 
