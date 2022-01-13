@@ -59,6 +59,15 @@ exports.ReceiptSchema = new mongoose_1.Schema({
         type: String,
         required: true,
     },
+    address: {
+        type: String,
+        required: true,
+    },
+    deliveryFee: {
+        type: Number,
+        required: true,
+        min: 0
+    },
     pickupDate: {
         type: String,
         required: true,

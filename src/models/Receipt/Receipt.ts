@@ -4,7 +4,9 @@ export interface IReceipt {
     _id?: string,
     receiptName: string, 
     customerName: string, 
-    customerPhone: string, 
+    customerPhone: string,
+    address: string,
+    deliveryFee: number, 
     pickupDate: string, 
     total: number,
     merchantCartQuantity: number,
@@ -58,6 +60,15 @@ export const ReceiptSchema: Schema<IReceipt> = new Schema({
     customerPhone: {
         type: String, 
         required: true,
+    },
+    address: {
+        type: String, 
+        required: true,
+    },
+    deliveryFee: {
+        type: Number, 
+        required: true,
+        min: 0
     },
     pickupDate: {
         type: String, 
