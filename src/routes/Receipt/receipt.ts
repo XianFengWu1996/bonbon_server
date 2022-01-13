@@ -47,8 +47,7 @@ router.get('/receipt', auth, async(req: Request, res: Response) => {
 router.post('/receipt', auth, async(req: Request, res: Response) => {
     try {
         const { receipt } : { receipt: IReceipt} =  req.body;
-        console.log(receipt);
-
+            
         validateReceiptData(receipt);
 
         const newReceipt = await Receipt.create({ ...receipt, owner: req.user?._id });
